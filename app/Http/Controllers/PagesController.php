@@ -18,4 +18,12 @@ class PagesController extends Controller
     {
         return view ('chat');
     }
+    public function login()
+    {
+        return view ('login');
+    }
+    public function register()
+    {
+        return view ('register');
+    }
 }
