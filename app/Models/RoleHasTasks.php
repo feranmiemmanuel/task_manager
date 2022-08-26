@@ -5,12 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Task extends Model
+class RoleHasTasks extends Model
 {
     use HasFactory;
-
-    public function user()
-    {
-        return $this->belongsToMany(User::class);
-    }
+    
+    protected $table = 'user_has_tasks';
 }
