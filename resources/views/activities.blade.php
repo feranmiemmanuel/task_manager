@@ -92,7 +92,7 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true"></button>
                         </div>
                         <div class="modal-body p-4">
-                            <form class="needs-validation" name="event-form" id="form-event" novalidate>
+                            <form class="needs-validation" id="form-event" novalidate>
                                 <div class="text-end">
                                     <a href="#" class="btn btn-sm btn-soft-primary" id="edit-event-btn" data-id="edit-event" onclick="editEvent(this)" role="button">Edit</a>
                                 </div>
@@ -132,33 +132,33 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row event-form">
+                                
                                     <div class="col-12">
                                         <div class="mb-3">
-                                            <label class="form-label">Type</label>
-                                            <select class="form-select d-none" name="category" id="event-category" required>
-                                                <option value="bg-soft-danger">Danger</option>
-                                                <option value="bg-soft-success">Success</option>
-                                                <option value="bg-soft-primary">Primary</option>
-                                                <option value="bg-soft-info">Info</option>
-                                                <option value="bg-soft-dark">Dark</option>
-                                                <option value="bg-soft-warning">Warning</option>
-                                            </select>
-                                            <div class="invalid-feedback">Please select a valid event category</div>
+                                            <label class="form-label">Title</label>
+                                            <input class="form-control d-none" placeholder="Enter task title" type="text" name="title" id="event-title" required value="" />
+                                            <div class="invalid-feedback">Please provide a valid task title</div>
                                         </div>
                                     </div>
+
+                                    {{-- <div class="row event-form">
+                                        <div class="col-12">
+                                            <div class="mb-3">
+                                                <label class="form-label">Users to Assign Tasks</label> --}}
+                                                <p hidden>
+                                                <select id="event-category" >
+                                                    {{-- <option value="bg-soft-warning">Warning</option> --}}
+                                                </select>
+                                                </p>
+                                                {{-- <div class="invalid-feedback">Please select a valid event category</div>
+                                            </div>
+                                        </div> --}}
+                                        <!--end col-->
+
                                     <!--end col-->
                                     <div class="col-12">
                                         <div class="mb-3">
-                                            <label class="form-label">Event Name</label>
-                                            <input class="form-control d-none" placeholder="Enter event name" type="text" name="title" id="event-title" required value="" />
-                                            <div class="invalid-feedback">Please provide a valid event name</div>
-                                        </div>
-                                    </div>
-                                    <!--end col-->
-                                    <div class="col-12">
-                                        <div class="mb-3">
-                                            <label>Event Date</label>
+                                            <label>Task Due Date</label>
                                             <div class="input-group d-none">
                                                 <input type="text" id="event-start-date" class="form-control flatpickr flatpickr-input" placeholder="Select date" readonly required>
                                                 <span class="input-group-text"><i class="ri-calendar-event-line"></i></span>
@@ -166,52 +166,55 @@
                                         </div>
                                     </div>
                                     <!--end col-->
-                                    <div class="col-12" id="event-time">
+                                    {{-- <div class="col-12" id="event-time">
                                         <div class="row">
                                             <div class="col-6">
                                                 <div class="mb-3">
                                                     <label class="form-label">Start Time</label>
-                                                    <div class="input-group d-none">
-                                                        <input id="timepicker1" type="text" class="form-control flatpickr flatpickr-input" placeholder="Select start time" readonly>
-                                                        <span class="input-group-text"><i class="ri-time-line"></i></span>
+                                                    <div class="input-group d-none"> --}}
+                                                        <input id="timepicker1" type="text" hidden>
+                                                        {{-- <span class="input-group-text"><i class="ri-time-line"></i></span>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="col-6">
                                                 <div class="mb-3">
                                                     <label class="form-label">End Time</label>
-                                                    <div class="input-group d-none">
-                                                        <input id="timepicker2" type="text" class="form-control flatpickr flatpickr-input" placeholder="Select end time" readonly>
-                                                        <span class="input-group-text"><i class="ri-time-line"></i></span>
+                                                    <div class="input-group d-none"> --}}
+                                                        <input id="timepicker2" hidden>
+                                                        {{-- <span class="input-group-text"><i class="ri-time-line"></i></span>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> --}}
                                     <!--end col-->
-                                    <div class="col-12">
+                                    {{-- <div class="col-12">
                                         <div class="mb-3">
                                             <label for="event-location">Location</label>
-                                            <div>
-                                                <input type="text" class="form-control d-none" name="event-location" id="event-location" placeholder="Event location">
-                                            </div>
+                                            <div> --}}
+                                                <input id="event-location" hidden>
+                                            {{-- </div>
                                         </div>
-                                    </div>
+                                    </div> --}}
                                     <!--end col-->
-                                    <input type="hidden" id="eventid" name="eventid" value="" />
+                                    {{-- <input type="hidden" id="eventid" name="eventid" value="" /> --}}
                                     <div class="col-12">
                                         <div class="mb-3">
                                             <label class="form-label">Description</label>
-                                            <textarea class="form-control d-none" id="event-description" placeholder="Enter a description" rows="3" spellcheck="false"></textarea>
+                                            <textarea class="form-control d-none" name="description" id="event-description" placeholder="Enter a description" rows="3" spellcheck="false"></textarea>
                                         </div>
                                     </div>
                                     <!--end col-->
+                                    <div class="mb-3">
+                                        <div class="hstack gap-2 justify-content-end">
+                                            <button type="button" class="btn btn-soft-danger" id="btn-delete-event"><i class="ri-close-line align-bottom"></i> Delete</button>
+                                            <button type="submit" class="btn btn-success" id="btn-save-event">Add Event</button>
+                                    </div>
+                                    </div>
                                 </div>
                                 <!--end row-->
-                                <div class="hstack gap-2 justify-content-end">
-                                    <button type="button" class="btn btn-soft-danger" id="btn-delete-event"><i class="ri-close-line align-bottom"></i> Delete</button>
-                                    <button type="submit" class="btn btn-success" id="btn-save-event">Add Event</button>
-                                </div>
+                                
                             </form>
                         </div>
                     </div> <!-- end modal-content-->
