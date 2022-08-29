@@ -92,7 +92,8 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true"></button>
                         </div>
                         <div class="modal-body p-4">
-                            <form class="needs-validation" id="form-event" novalidate>
+                            <form action="{{route('assignTask')}}" method="POST" id="form-event">
+                                @csrf
                                 <div class="text-end">
                                     <a href="#" class="btn btn-sm btn-soft-primary" id="edit-event-btn" data-id="edit-event" onclick="editEvent(this)" role="button">Edit</a>
                                 </div>
@@ -136,7 +137,7 @@
                                     <div class="col-12">
                                         <div class="mb-3">
                                             <label class="form-label">Title</label>
-                                            <input class="form-control d-none" placeholder="Enter task title" type="text" name="title" id="event-title" required value="" />
+                                            <input class="form-control d-none" placeholder="Enter task title" type="text" name="title" id="event-title" requiredue/>
                                             <div class="invalid-feedback">Please provide a valid task title</div>
                                         </div>
                                     </div>
@@ -160,7 +161,7 @@
                                         <div class="mb-3">
                                             <label>Task Due Date</label>
                                             <div class="input-group d-none">
-                                                <input type="text" id="event-start-date" class="form-control flatpickr flatpickr-input" placeholder="Select date" readonly required>
+                                                <input name="due_date" type="text" id="event-start-date" class="form-control flatpickr flatpickr-input" placeholder="Select date" readonly required>
                                                 <span class="input-group-text"><i class="ri-calendar-event-line"></i></span>
                                             </div>
                                         </div>
@@ -208,8 +209,9 @@
                                     <!--end col-->
                                     <div class="mb-3">
                                         <div class="hstack gap-2 justify-content-end">
+                                            <button name="submit" type="submit" class="btn btn-success">Add Task</button>
                                             <button type="button" class="btn btn-soft-danger" id="btn-delete-event"><i class="ri-close-line align-bottom"></i> Delete</button>
-                                            <button type="submit" class="btn btn-success" id="btn-save-event">Add Event</button>
+                                           <p hidden> <button type="submit" class="btn btn-success" id="btn-save-event">Add Event</button></p>
                                     </div>
                                     </div>
                                 </div>

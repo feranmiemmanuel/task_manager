@@ -619,70 +619,70 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     E.render(),
         upcomingEvent(y),
-        i.addEventListener("submit", function (e) {
-            e.preventDefault();
-            var t,
-                n = document.getElementById("event-title").value,
-                a = document.getElementById("event-category").value,
-                d = document
-                    .getElementById("event-start-date")
-                    .value.split("to"),
-                i = new Date(d[0].trim()),
-                l = d[1] ? new Date(d[1].trim()) : "",
-                o = null,
-                r = document.getElementById("event-location").value,
-                c = document.getElementById("event-description").value,
-                s = document.getElementById("eventid").value,
-                m = !1;
-            1 < d.length
-                ? ((o = new Date(d[1])).setDate(o.getDate() + 1),
-                  (d = new Date(d[0])),
-                  (m = !0))
-                : ((t = d),
-                  (e = document.getElementById("timepicker1").value.trim()),
-                  (u = document.getElementById("timepicker2").value.trim()),
-                  (d = new Date(d + "T" + e)),
-                  (o = new Date(t + "T" + u)));
-            var u = y.length + 1;
-            !1 === p[0].checkValidity()
-                ? p[0].classList.add("was-validated")
-                : (v
-                      ? (v.setProp("id", s),
-                        v.setProp("title", n),
-                        v.setProp("classNames", [a]),
-                        v.setStart(i),
-                        v.setEnd(l),
-                        v.setAllDay(m),
-                        v.setExtendedProp("description", c),
-                        v.setExtendedProp("location", r),
-                        (s = y.findIndex(function (e) {
-                            return e.id == v.id;
-                        })),
-                        y[s] &&
-                            ((y[s].title = n),
-                            (y[s].start = i),
-                            (y[s].end = l),
-                            (y[s].allDay = m),
-                            (y[s].className = a),
-                            (y[s].description = c),
-                            (y[s].location = r)),
-                        E.render())
-                      : (E.addEvent(
-                            (r = {
-                                id: u,
-                                title: n,
-                                start: d,
-                                end: o,
-                                allDay: m,
-                                className: a,
-                                description: c,
-                                location: r,
-                            })
-                        ),
-                        y.push(r)),
-                  g.hide(),
-                  upcomingEvent(y));
-        }),
+        // i.addEventListener("submit", function (e) {
+        //     e.preventDefault();
+        //     var t,
+        //         n = document.getElementById("event-title").value,
+        //         a = document.getElementById("event-category").value,
+        //         d = document
+        //             .getElementById("event-start-date")
+        //             .value.split("to"),
+        //         i = new Date(d[0].trim()),
+        //         l = d[1] ? new Date(d[1].trim()) : "",
+        //         o = null,
+        //         r = document.getElementById("event-location").value,
+        //         c = document.getElementById("event-description").value,
+        //         // s = document.getElementById("eventid").value,
+        //         m = !1;
+        //     1 < d.length
+        //         ? ((o = new Date(d[1])).setDate(o.getDate() + 1),
+        //           (d = new Date(d[0])),
+        //           (m = !0))
+        //         : ((t = d),
+        //           (e = document.getElementById("timepicker1").value.trim()),
+        //           (u = document.getElementById("timepicker2").value.trim()),
+        //           (d = new Date(d + "T" + e)),
+        //           (o = new Date(t + "T" + u)));
+        //     var u = y.length + 1;
+        //     !1 === p[0].checkValidity()
+        //         ? p[0].classList.add("was-validated")
+        //         : (v
+        //               ? (v.setProp("id", s),
+        //                 v.setProp("title", n),
+        //                 v.setProp("classNames", [a]),
+        //                 v.setStart(i),
+        //                 v.setEnd(l),
+        //                 v.setAllDay(m),
+        //                 v.setExtendedProp("description", c),
+        //                 v.setExtendedProp("location", r),
+        //                 (s = y.findIndex(function (e) {
+        //                     return e.id == v.id;
+        //                 })),
+        //                 y[s] &&
+        //                     ((y[s].title = n),
+        //                     (y[s].start = i),
+        //                     (y[s].end = l),
+        //                     (y[s].allDay = m),
+        //                     (y[s].className = a),
+        //                     (y[s].description = c),
+        //                     (y[s].location = r)),
+        //                 E.render())
+        //               : (E.addEvent(
+        //                     (r = {
+        //                         id: u,
+        //                         title: n,
+        //                         start: d,
+        //                         end: o,
+        //                         allDay: m,
+        //                         className: a,
+        //                         description: c,
+        //                         location: r,
+        //                     })
+        //                 ),
+        //                 y.push(r)),
+        //           g.hide(),
+        //           upcomingEvent(y));
+        // }),
         document
             .getElementById("btn-delete-event")
             .addEventListener("click", function (e) {

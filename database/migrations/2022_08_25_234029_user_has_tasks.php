@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('user_tasks', function (Blueprint $table) {
+        Schema::create('task_user', function (Blueprint $table) {
             $table->string('user_id')->references(['id'])->on('users')->onDelete('CASCADE');
             $table->string('task_id')->references(['id'])->on('tasks')->onDelete('CASCADE');
             // $table->foreign(['user_id'])->references(['id'])->on('users')->onDelete('cascade');
@@ -29,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_tasks');
+        Schema::dropIfExists('task_user');
     }
 };

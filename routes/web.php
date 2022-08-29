@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PagesController;
+use App\Http\Controllers\TaskController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,4 +28,5 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
     Route::get('/dashboard',[PagesController::class, 'dashboard'] )->name('dashboard');
     Route::get('/activities',[PagesController::class, 'activities'] )->name('activities');
+    Route::post('/assign-task', [TaskController::class, 'create'])->name('assignTask');
 });

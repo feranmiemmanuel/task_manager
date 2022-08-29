@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\task;
+use App\Models\User;
+use App\Models\RoleHasTasks;
 use Illuminate\Http\Request;
 
 class TaskController extends Controller
@@ -22,9 +24,21 @@ class TaskController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+            $users = User::pluck('id');
+            // dd($users);
+            $task = new Task;
+            $task->title = $request->title;
+            $task->description = $request->description;
+            $task->due_date = $request->due_date;
+            $task->save();
+            $task->user()->attach($users);
+            // foreach ($users as $id) {
+            //     $user = User::find($id);
+            //     $user->task()->attach($task->id);
+            // }
+            return redirect('/activities');
     }
 
     /**

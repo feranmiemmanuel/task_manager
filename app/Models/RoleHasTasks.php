@@ -9,5 +9,10 @@ class RoleHasTasks extends Model
 {
     use HasFactory;
     
-    protected $table = 'user_has_tasks';
+     protected $fillable = [
+        'user_id',
+        'task_id'
+     ];
+
+    protected $table = 'task_user';
 }
