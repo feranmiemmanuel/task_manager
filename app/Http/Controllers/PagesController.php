@@ -47,4 +47,8 @@ class PagesController extends Controller
     {
         return view ('register');
     }
+    public function viewUser(User $user)
+    { 
+        return view('view_user',['user' => $user]);
+    }
 }

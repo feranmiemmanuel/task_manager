@@ -94,9 +94,9 @@
                                     </tr>
                                 </thead>
 
-                                <tbody href="{{route('activities')}}">
+                                <tbody >
                                     @forelse($users as $user)
-                                    <tr>
+                                    <tr onclick="viewUser({{$user->id}})">
                                         <td>{{$user->id}}</td>
                                         <td>{{$user->name}}</td>
                                         <td>{{$user->email}}</td>
@@ -180,4 +180,10 @@
 
     </div>
 </div>
+<script>
+    function viewUser(id)
+    {
+        window.location = "/view-user/" + id
+    }
+</script>
 @endsection

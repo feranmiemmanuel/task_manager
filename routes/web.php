@@ -28,5 +28,6 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
     Route::get('/dashboard',[PagesController::class, 'dashboard'] )->name('dashboard');
     Route::get('/activities',[PagesController::class, 'activities'] )->name('activities');
+    Route::get('/view-user/{user}', [PagesController::class, 'viewUser'])->name('viewUser');
     Route::post('/assign-task', [TaskController::class, 'create'])->name('assignTask');
 });
