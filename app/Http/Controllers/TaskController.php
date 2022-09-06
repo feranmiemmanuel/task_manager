@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\task;
+use App\Models\Task;
 use App\Models\User;
-use App\Models\RoleHasTasks;
+use App\Models\RoleUser;
 use Illuminate\Http\Request;
 
 class TaskController extends Controller
@@ -58,7 +58,7 @@ class TaskController extends Controller
      * @param  \App\Models\task  $task
      * @return \Illuminate\Http\Response
      */
-    public function show(task $task)
+    public function show()
     {
         //
     }
@@ -69,9 +69,16 @@ class TaskController extends Controller
      * @param  \App\Models\task  $task
      * @return \Illuminate\Http\Response
      */
-    public function edit(task $task)
+    public function edit(Task $task, User $user, Request $request)
     {
-        //
+        $removeUser = RoleUser::where('user_id', $user)->and('task_id', $task)->delete();
+        $task = Task::create([
+            'title' => $request->title,
+            'description' => $request->description,
+            'due_date' => $request->due_date
+        ]);
+        $task->user()->attach($user);
+        return redirect('/dashboard');
     }
 
     /**

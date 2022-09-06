@@ -44,6 +44,6 @@ class User extends Authenticatable
 
     public function task()
     {
-        return $this->belongsToMany(Task::class);
+        return $this->belongsToMany(Task::class)->using(RoleUser::class);
     }
 }
