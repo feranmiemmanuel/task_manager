@@ -51,4 +51,8 @@ class PagesController extends Controller
     { 
         return view('view_user',['user' => $user]);
     }
+    public function viewUserTask(User $user, Task $task)
+    {
+        return view('view_user_task', ['task' => $task, 'user' => $user]);
+    }
 }

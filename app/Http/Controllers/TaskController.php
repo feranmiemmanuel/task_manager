@@ -69,16 +69,17 @@ class TaskController extends Controller
      * @param  \App\Models\task  $task
      * @return \Illuminate\Http\Response
      */
-    public function edit(Task $task, User $user, Request $request)
+    public function edit(User $user, Task $task, Request $request)
     {
-        $removeUser = RoleUser::where('user_id', $user)->and('task_id', $task)->delete();
+        // dd($user);
+        $removeUser = RoleUser::where('user_id', $user->id)->where('task_id', $task->id)->delete();
         $task = Task::create([
             'title' => $request->title,
             'description' => $request->description,
             'due_date' => $request->due_date
         ]);
         $task->user()->attach($user);
-        return redirect('/dashboard');
+        return redirect('/view-user'.'/'.$user->id);
     }
 
     /**

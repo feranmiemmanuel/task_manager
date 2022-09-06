@@ -81,7 +81,7 @@
                                             <h5 class="card-title mb-3 ">Tasks</h5>
                                             <hr>
                                             @forelse($user->task as $task)
-                                            <ol onclick="">
+                                            <ol onclick="viewTask({{$user->id}}, {{$task->id}})">
                                             <li><h5 class="card-title mb-3">{{$task->title}}</h5>
                                             <p>{{$task->description}}</p>
                                             </li>
@@ -1076,6 +1076,11 @@
             <!--end col-->
         </div>
         <!--end row-->
-
+<script>
+    function viewTask(userId, taskId)
+    {
+        window.location = "/view/user/" + userId + "/task/" + taskId
+    }
+</script>
 
 @endsection
